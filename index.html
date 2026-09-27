@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kalaiyarasan | Software Engineer | Python | GenAI | Frappe ERPNext</title>
+<meta name="description" content="Portfolio of Kalaiyarasan, a Software Engineer specializing in Python, Frappe Framework, ERPNext, Generative AI, AI Agents, RAG and backend development.">
+<meta property="og:title" content="Kalaiyarasan | Software Engineer | Python | GenAI">
+<meta property="og:description" content="Python backend engineer building toward Generative AI, RAG and AI agent systems.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0F1C; --bg-elev:#0F1729; --card:#121D33; --border:#1E2A45;
+  --text:#E7ECF5; --text-dim:#94A3B8; --text-faint:#5E6E8C;
+  --accent:#38D0F0; --accent2:#6366F1; --accent-soft:rgba(56,208,240,.12);
+  --radius:14px; --maxw:1080px;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#F7F9FC; --bg-elev:#FFFFFF; --card:#FFFFFF; --border:#E2E8F0;
+    --text:#0B1526; --text-dim:#475569; --text-faint:#8494AC;
+    --accent:#0891B2; --accent2:#4F46E5; --accent-soft:rgba(8,145,178,.08);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F7F9FC; --bg-elev:#FFFFFF; --card:#FFFFFF; --border:#E2E8F0;
+  --text:#0B1526; --text-dim:#475569; --text-faint:#8494AC;
+  --accent:#0891B2; --accent2:#4F46E5; --accent-soft:rgba(8,145,178,.08);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));}
+body{
+  background:var(--bg); color:var(--text); font-family:'Inter',system-ui,sans-serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+h1,h2,h3,.logo,.tag,.btn,.nav-links a{font-family:'Space Grotesk',system-ui,sans-serif;}
+img{max-width:100%;}
+.container{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+a{color:inherit; text-decoration:none;}
+
+/* NAV */
+header{
+  position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--border);
+  padding-top:env(safe-area-inset-top,0px);
+}
+nav{display:flex; align-items:center; justify-content:space-between; height:64px; max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+.logo{font-weight:700; font-size:1.1rem; letter-spacing:.02em;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex; gap:22px; list-style:none;}
+.nav-links a{font-size:.88rem; color:var(--text-dim); transition:color .2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-actions{display:flex; align-items:center; gap:10px;}
+.theme-btn{
+  width:36px; height:36px; border-radius:50%; border:1px solid var(--border); background:var(--card);
+  color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1rem;
+}
+.hamburger{display:none; background:none; border:none; color:var(--text); font-size:1.4rem; cursor:pointer;}
+.mobile-menu{display:none; flex-direction:column; gap:2px; padding:8px 24px 16px; border-bottom:1px solid var(--border); background:var(--bg-elev);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{padding:10px 0; color:var(--text-dim); border-bottom:1px solid var(--border); font-size:.92rem;}
+@media(max-width:860px){ .nav-links{display:none;} .hamburger{display:block;} }
+
+/* SECTIONS */
+.section{padding:88px 0;}
+.section-inner{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+.eyebrow{color:var(--accent); font-size:.8rem; font-weight:600; margin-bottom:10px;}
+h2{font-size:clamp(1.6rem,3vw,2.1rem); font-weight:700; margin-bottom:14px; letter-spacing:-.01em;}
+.lead{color:var(--text-dim); max-width:640px; margin-bottom:40px; font-size:1.02rem;}
+.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px;}
+
+/* HERO */
+.hero{padding:100px 0 80px; position:relative; overflow:hidden;}
+.hero::before{
+  content:""; position:absolute; inset:-20% -10% auto -10%; height:420px;
+  background:radial-gradient(ellipse at 30% 0%, var(--accent-soft), transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{max-width:var(--maxw); margin:0 auto; padding:0 24px; position:relative;}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem); font-weight:700; line-height:1.08; letter-spacing:-.02em; margin-bottom:14px;}
+.hero .role{color:var(--accent); font-size:1.05rem; font-weight:600; margin-bottom:22px;}
+.hero p{color:var(--text-dim); max-width:600px; font-size:1.05rem; margin-bottom:32px;}
+.btn-row{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:44px;}
+.btn{
+  padding:12px 22px; border-radius:9px; font-size:.9rem; font-weight:600; cursor:pointer;
+  border:1px solid transparent; transition:transform .15s, opacity .15s;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-primary{background:var(--accent); color:#04141A;}
+.btn-secondary{background:transparent; border-color:var(--border); color:var(--text);}
+.btn-ghost{background:transparent; color:var(--text-dim); border-color:var(--border);}
+.flow{display:flex; flex-wrap:wrap; gap:10px; align-items:center; color:var(--text-faint); font-size:.82rem; font-family:'Space Grotesk',monospace;}
+.flow span.node{padding:6px 12px; border:1px solid var(--border); border-radius:7px; background:var(--card); color:var(--text-dim);}
+
+/* TAGS / BADGES */
+.tags{display:flex; flex-wrap:wrap; gap:9px;}
+.tag{
+  padding:7px 13px; border-radius:20px; font-size:.82rem; background:var(--accent-soft);
+  color:var(--accent); border:1px solid transparent; font-weight:500;
+}
+
+/* SKILLS */
+.skill-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;}
+.skill-cat h3{font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); margin-bottom:12px; font-weight:600;}
+.skill-cat .tags{gap:8px;}
+.skill-cat .tag{background:var(--bg-elev); color:var(--text-dim); border:1px solid var(--border);}
+
+/* TIMELINE */
+.timeline-item{border-left:2px solid var(--border); padding-left:22px; position:relative; padding-bottom:6px;}
+.timeline-item::before{content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--accent);}
+.timeline-item h3{font-size:1.15rem; margin-bottom:2px;}
+.timeline-item .meta{color:var(--text-faint); font-size:.85rem; margin-bottom:14px;}
+.timeline-item ul{color:var(--text-dim); padding-left:18px; font-size:.94rem; display:grid; gap:6px;}
+
+/* PROJECTS */
+.project-card{display:grid; gap:16px; margin-bottom:20px;}
+.project-card h3{font-size:1.3rem; margin-bottom:6px;}
+.project-card .desc{color:var(--text-dim); font-size:.95rem; margin-bottom:14px;}
+.arch{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-family:'Space Grotesk',monospace;
+  font-size:.78rem; color:var(--text-faint); background:var(--bg-elev); border:1px solid var(--border);
+  border-radius:9px; padding:14px; margin-bottom:14px;
+}
+.arch b{color:var(--accent);}
+.proj-links{display:flex; gap:10px; margin-top:4px;}
+.link-btn{font-size:.82rem; padding:7px 13px; border-radius:7px; border:1px solid var(--border); color:var(--text-dim);}
+.link-btn.live:hover{color:var(--accent); border-color:var(--accent);}
+.link-btn.muted{opacity:.55; cursor:default;}
+
+/* AI JOURNEY */
+.journey{display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+.journey .node{padding:10px 16px; border-radius:9px; border:1px solid var(--border); background:var(--card); font-size:.86rem; font-family:'Space Grotesk',monospace;}
+.journey .node.hl{border-color:var(--accent); color:var(--accent);}
+.journey .arrow{color:var(--text-faint);}
+
+/* APPROACH */
+.approach-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px;}
+.approach-step{padding:18px; border-radius:var(--radius); background:var(--bg-elev); border:1px solid var(--border);}
+.approach-step .n{color:var(--accent); font-family:'Space Grotesk',monospace; font-size:.8rem; margin-bottom:6px;}
+.approach-step h4{font-size:.98rem; margin-bottom:4px;}
+.approach-step p{color:var(--text-dim); font-size:.85rem;}
+
+/* CONTACT */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+@media(max-width:760px){ .contact-grid{grid-template-columns:1fr;} }
+.field{margin-bottom:14px;}
+.field label{display:block; font-size:.82rem; color:var(--text-dim); margin-bottom:6px;}
+.field input,.field textarea{
+  width:100%; padding:11px 13px; border-radius:8px; border:1px solid var(--border);
+  background:var(--bg-elev); color:var(--text); font-family:inherit; font-size:.92rem;
+}
+.field textarea{resize:vertical; min-height:100px;}
+.contact-links{display:flex; flex-direction:column; gap:12px;}
+.contact-links a,.contact-links .disabled{
+  display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:9px;
+  border:1px solid var(--border); font-size:.92rem; color:var(--text-dim);
+}
+.contact-links a:hover{border-color:var(--accent); color:var(--accent);}
+.contact-links .disabled{opacity:.5;}
+
+footer{border-top:1px solid var(--border); padding:28px 0; text-align:center; color:var(--text-faint); font-size:.82rem;}
+
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+.reveal.in{opacity:1; transform:none;}
+@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#home" class="logo">Kalai<span>.dev</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#journey">AI Journey</a></li>
+      <li><a href="#opensource">Open Source</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">🌙</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+    <a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#journey">AI Journey</a>
+    <a href="#opensource">Open Source</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <h1>Kalaiyarasan</h1>
+    <div class="role">Software Engineer · Python · Frappe / ERPNext · Generative AI</div>
+    <p>Software Engineer with 4+ years of hands-on experience building production applications using Python, Frappe Framework, ERPNext, JavaScript and SQL. Currently focused on building Generative AI applications, AI agents, RAG systems and real-time voice AI solutions.</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-primary">View My Projects</a>
+      <a href="/resume/Kalaiyarasan-Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+      <a href="#contact" class="btn btn-ghost">Contact Me</a>
+    </div>
+    <div class="flow">
+      <span class="node">Python</span><span>→</span><span class="node">APIs</span><span>→</span>
+      <span class="node">RAG</span><span>→</span><span class="node">LLM</span><span>→</span>
+      <span class="node">AI Agents</span><span>→</span><span class="node">Voice AI</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-inner reveal">
+    <div class="eyebrow">About</div>
+    <h2>Backend engineering, now expanding into AI</h2>
+    <p class="lead" style="max-width:760px;">
+      I'm a Software Engineer with hands-on experience developing and maintaining production software using Python, Frappe Framework, ERPNext, JavaScript, SQL and Git. My work spans building business functionality and APIs, debugging production issues, gathering customer requirements, and owning features from requirement analysis through production deployment.
+      <br><br>
+      I've been expanding into Generative AI — LLM applications, RAG pipelines, AI agents, tool calling, evaluation, speech-to-text and text-to-speech — with the goal of combining solid engineering fundamentals with AI to build reliable, practical products.
+    </p>
+    <h3 style="font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); margin-bottom:12px;">Currently Exploring</h3>
+    <div class="tags">
+      <span class="tag">Generative AI</span><span class="tag">LLM Applications</span><span class="tag">RAG</span>
+      <span class="tag">AI Agents</span><span class="tag">Tool Calling</span><span class="tag">RAG Evaluation</span>
+      <span class="tag">Voice AI</span><span class="tag">Speech-to-Text</span><span class="tag">Text-to-Speech</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills" style="background:var(--bg-elev); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="section-inner reveal">
+    <div class="eyebrow">Skills</div>
+    <h2>Technical Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-cat"><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">SQL</span></div></div>
+      <div class="skill-cat"><h3>Frameworks</h3><div class="tags"><span class="tag">Frappe Framework</span><span class="tag">ERPNext</span><span class="tag">FastAPI</span><span class="tag">React</span></div></div>
+      <div class="skill-cat"><h3>Generative AI</h3><div class="tags"><span class="tag">LLM Apps</span><span class="tag">RAG</span><span class="tag">AI Agents</span><span class="tag">Tool Calling</span><span class="tag">Prompt Engineering</span><span class="tag">RAGAS</span><span class="tag">Embeddings</span><span class="tag">Vector Search</span><span class="tag">STT</span><span class="tag">TTS</span></div></div>
+      <div class="skill-cat"><h3>Cloud / Infra</h3><div class="tags"><span class="tag">AWS EC2</span><span class="tag">AWS RDS</span><span class="tag">AWS IAM</span><span class="tag">AWS S3</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Linux</span></div></div>
+      <div class="skill-cat"><h3>Developer Tools</h3><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">REST APIs</span><span class="tag">API Docs</span><span class="tag">Debugging</span><span class="tag">Deployment</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="section-inner reveal">
+    <div class="eyebrow">Experience</div>
+    <h2>Professional Experience</h2>
+    <div class="timeline-item">
+      <h3>Software Engineer</h3>
+      <div class="meta">Digixr Technologies</div>
+      <ul>
+        <li>Developed and maintained production functionality using Python and the Frappe Framework.</li>
+        <li>Built APIs and business logic based on customer requirements; worked with ERPNext workflows and modules.</li>
+        <li>Debugged and resolved production issues, owning functionality end-to-end from requirement analysis through development, testing and delivery.</li>
+        <li>Maintained deployment documentation and technical notes; used Git for source-code management.</li>
+        <li>Worked with AWS EC2, RDS, IAM and S3, completing assigned functionality within customer deadlines.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects" style="background:var(--bg-elev); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="section-inner reveal">
+    <div class="eyebrow">Projects</div>
+    <h2>Featured Projects</h2>
+
+    <div class="card project-card">
+      <h3>AI Voice Agent for Hospital Front Desk</h3>
+      <p class="desc">A real-time AI voice assistant that handles telephone conversations by connecting a phone call through Bluetooth to a laptop, then processing the conversation through an AI voice pipeline. Built as two cooperating applications: a Bluetooth app that answers/ends calls and streams audio, and an AI Agent app that runs speech-to-text, LLM reasoning and text-to-speech.</p>
+      <div class="arch"><b>Phone Call</b>→Bluetooth→Laptop→Audio In→<b>STT</b>→<b>AI Agent / LLM</b>→<b>TTS</b>→Audio Out→Caller</div>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">React</span><span class="tag">Bluetooth</span><span class="tag">Linux Audio</span>
+        <span class="tag">STT</span><span class="tag">LLM</span><span class="tag">TTS</span><span class="tag">Real-time Audio</span><span class="tag">REST APIs</span>
+      </div>
+      <div class="proj-links"><span class="link-btn muted">GitHub — private repo</span><span class="link-btn muted">Demo — in progress</span></div>
+    </div>
+
+    <div class="card project-card">
+      <h3>Generative AI &amp; RAG Applications</h3>
+      <p class="desc">Exploring and building practical Generative AI applications using LLMs, Retrieval-Augmented Generation, AI agents, tool calling and evaluation techniques.</p>
+      <div class="arch">User→Application→Retriever→<b>Vector DB</b>→Context→<b>LLM</b>→Response &nbsp;|&nbsp; User→<b>AI Agent</b>→Tools/APIs→LLM→Response</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">Embeddings</span><span class="tag">Vector Search</span><span class="tag">AI Agents</span><span class="tag">RAGAS</span><span class="tag">Prompt Engineering</span></div>
+      <div class="proj-links"><span class="link-btn muted">GitHub — in progress</span></div>
+    </div>
+
+    <div class="card project-card">
+      <h3>Frappe / ERPNext Business Applications</h3>
+      <p class="desc">Hands-on experience developing and maintaining business functionality using Python, Frappe Framework and ERPNext.</p>
+      <div class="arch">Business Requirement→Analysis→<b>Python / Frappe Dev</b>→Testing→Debugging→Deployment→Production</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Frappe</span><span class="tag">ERPNext</span><span class="tag">APIs</span><span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">Git</span></div>
+      <div class="proj-links"><span class="link-btn muted">Client work — private</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="journey">
+  <div class="section-inner reveal">
+    <div class="eyebrow">AI Engineering Journey</div>
+    <h2>From Software Engineering to AI Engineering</h2>
+    <p class="lead">My software engineering experience is the foundation for building reliable Generative AI applications — not just experimenting with models, but integrating AI into real software systems.</p>
+    <div class="journey">
+      <span class="node">Software Engineering</span><span class="arrow">→</span>
+      <span class="node">Python Backend</span><span class="arrow">→</span>
+      <span class="node">Frappe / ERPNext</span><span class="arrow">→</span>
+      <span class="node">APIs &amp; Production</span><span class="arrow">→</span>
+      <span class="node hl">Generative AI</span><span class="arrow">→</span>
+      <span class="node hl">RAG</span><span class="arrow">→</span>
+      <span class="node hl">AI Agents</span><span class="arrow">→</span>
+      <span class="node hl">Voice AI</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="opensource" style="background:var(--bg-elev); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="section-inner reveal">
+    <div class="eyebrow">Open Source</div>
+    <h2>Open Source &amp; Engineering</h2>
+    <p class="lead">I've worked with the Frappe / ERPNext ecosystem, contributing through issue investigation and a merged upstream fix.</p>
+    <div class="btn-row" style="margin-bottom:0;">
+      <a href="https://github.com/kalaiyarasan-sys" target="_blank" rel="noopener" class="btn btn-secondary">View GitHub</a>
+      <a href="https://github.com/frappe/erpnext/issues/54022" target="_blank" rel="noopener" class="btn btn-ghost">View Contribution — Issue #54022</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="approach">
+  <div class="section-inner reveal">
+    <div class="eyebrow">Approach</div>
+    <h2>How I Build Software</h2>
+    <div class="approach-grid">
+      <div class="approach-step"><div class="n">01</div><h4>Understand the Problem</h4><p>Start from the real need, not the assumed solution.</p></div>
+      <div class="approach-step"><div class="n">02</div><h4>Analyze Requirements</h4><p>Translate business needs into concrete functionality.</p></div>
+      <div class="approach-step"><div class="n">03</div><h4>Design the Solution</h4><p>Plan the architecture before writing code.</p></div>
+      <div class="approach-step"><div class="n">04</div><h4>Develop</h4><p>Build maintainable, reviewable code.</p></div>
+      <div class="approach-step"><div class="n">05</div><h4>Test &amp; Debug</h4><p>Verify behavior and trace issues to root cause.</p></div>
+      <div class="approach-step"><div class="n">06</div><h4>Deploy &amp; Maintain</h4><p>Ship to production and own it afterward.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="resume" style="background:var(--bg-elev); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="section-inner reveal" style="text-align:center;">
+    <div class="eyebrow" style="text-align:left;">Resume</div>
+    <h2>Resume</h2>
+    <div class="tags" style="justify-content:center; margin-bottom:28px;">
+      <span class="tag">4+ Years Experience</span><span class="tag">Python</span><span class="tag">Frappe / ERPNext</span>
+      <span class="tag">Generative AI</span><span class="tag">AI Agents</span><span class="tag">Backend Development</span>
+    </div>
+    <a href="/resume/Kalaiyarasan-Resume.pdf" download class="btn btn-primary">Download Resume</a>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-inner reveal">
+    <div class="eyebrow">Contact</div>
+    <h2>Let's Build Something Useful</h2>
+    <p class="lead">I'm interested in Software Engineering, Generative AI, AI Agent, Python and backend engineering opportunities.</p>
+    <div class="contact-grid">
+      <form id="contactForm">
+        <div class="field"><label for="cname">Name</label><input id="cname" required></div>
+        <div class="field"><label for="cemail">Email</label><input id="cemail" type="email" required></div>
+        <div class="field"><label for="cmsg">Message</label><textarea id="cmsg" required></textarea></div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+      <div class="contact-links">
+        <a href="mailto:kalaiyarsan.m.dev@gmail.com">✉️ kalaiyarsan.m.dev@gmail.com</a>
+        <a href="https://github.com/kalaiyarasan-sys" target="_blank" rel="noopener">🐙 github.com/kalaiyarasan-sys</a>
+        <span class="disabled">🔗 LinkedIn — add your profile URL</span>
+        <a href="/resume/Kalaiyarasan-Resume.pdf" download>📄 Download Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Kalaiyarasan · Built with intent, not templates.</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  try{
+    var saved=localStorage.getItem('theme');
+    if(saved){ root.setAttribute('data-theme', saved); btn.textContent = saved==='dark' ? '☀️' : '🌙'; }
+  }catch(e){}
+  btn.addEventListener('click', function(){
+    var dark = matchMedia('(prefers-color-scheme: dark)').matches;
+    var current = root.getAttribute('data-theme') || (dark ? 'dark' : 'light');
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    btn.textContent = next==='dark' ? '☀️' : '🌙';
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
+
+  var ham=document.getElementById('hamburger'), menu=document.getElementById('mobileMenu');
+  ham.addEventListener('click', function(){ menu.classList.toggle('open'); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); }); });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var form=document.getElementById('contactForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name=document.getElementById('cname').value, email=document.getElementById('cemail').value, msg=document.getElementById('cmsg').value;
+    var body = encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:kalaiyarsan.m.dev@gmail.com?subject=' + encodeURIComponent('Portfolio contact from ' + name) + '&body=' + body;
+  });
+
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); obs.unobserve(en.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
